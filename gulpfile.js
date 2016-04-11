@@ -2,6 +2,7 @@ var gulp       = require('gulp'),
     ts         = require('gulp-typescript')
     gls        = require('gulp-live-server'),
     sourcemaps = require('gulp-sourcemaps'),
+    open       = require('gulp-open'),
     ip         = require('ip'),
     $build     = 'build',
     $port      = 3002,
@@ -38,5 +39,5 @@ gulp.task('server', function() {
 	});
 });
 
-gulp.task('default', ['typescript']);
+gulp.task('default', ['server','typescript:watch']);
 	

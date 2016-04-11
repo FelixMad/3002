@@ -9,10 +9,20 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^3.9.1",
-    "gulp-sourcemaps": "^1.6.0"
+    "gulp-live-server": "0.0.29",
+    "gulp-sourcemaps": "^1.6.0",
+    "ip": "^1.1.2"
   },
   "dependencies": {
     "gulp-typescript": "^2.13.0"
   },
-  "description": ""
+  "description": "Ejemplo para la utilización de Typescript con Gulp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelixMad/3002.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FelixMad/3002/issues"
+  },
+  "homepage": "https://github.com/FelixMad/3002#readme"
 }
