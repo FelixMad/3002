@@ -1,6 +1,10 @@
 var gulp       = require('gulp'),
     ts         = require('gulp-typescript')
-    sourcemaps = require('gulp-sourcemaps');
+    gls        = require('gulp-live-server'),
+    sourcemaps = require('gulp-sourcemaps'),
+    ip         = require('ip'),
+    $build     = 'build',
+    $address   = ip.address();
  
  gulp.task('typescript', function () {
 	return gulp.src('src/ts/*.ts')
@@ -10,13 +14,28 @@ var gulp       = require('gulp'),
 			out: 'output.js'
 		}))
         .pipe(sourcemaps.write())
-		.pipe(gulp.dest('built/js'));
+		.pipe(gulp.dest('build/js'));
 });
 
 gulp.task('typescript:watch', function(){
     gulp.watch('src/ts/*.ts',['typescript']);
 });
 
- 
+gulp.task('server', function() {
+	var server = gls.static($build, $port);
+	server.start();
+    
+    var options = {
+        uri: 'http://'+ $address +':' + $port,
+        app: 'google chrome'
+    };
+    gulp.src(__filename)
+        .pipe(open(options));
+
+	gulp.watch([$build + '/js/*.js'], function (file) {
+		server.notify.apply(server, [file]);
+	});
+});
+
 gulp.task('default', ['typescript']);
 	
