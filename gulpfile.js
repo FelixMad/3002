@@ -4,6 +4,7 @@ var gulp       = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     ip         = require('ip'),
     $build     = 'build',
+    $port      = 3002,
     $address   = ip.address();
  
  gulp.task('typescript', function () {
