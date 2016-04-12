@@ -1,13 +1,19 @@
-interface Person {
-    firstName: string;
-    lastName: string;
+class Greeter {
+    greeting: string;
+    constructor(message: string) {
+        this.greeting = message;
+    }
+    greet() {
+        return "Hello, " + this.greeting;
+    }
 }
 
+let greeter = new Greeter("world");
 
-function greeter(person: Person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
+let button = document.createElement('button');
+button.textContent = "Say Hello";
+button.onclick = function() {
+    alert(greeter.greet());
 }
 
-var user = { firstName: "Jane", lastName: "User" };
-
-document.body.innerHTML = greeter(user);
+document.body.appendChild(button);
